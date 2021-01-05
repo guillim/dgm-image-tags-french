@@ -9,17 +9,17 @@ authorLink: 'https://github.com/ScottBrenner'
 authorName: 'Scott Brenner'
 authorAvatar: 'https://avatars2.githubusercontent.com/u/416477?v=4&s=140'
 -->
-# Analyse Image from S3 with Amazon Rekognition Example
+# Tag an Image (stored on AWS S3) with Amazon Rekognition
 
-This example shows how to analyze an image in an S3 bucket with Amazon Rekognition and return a list of labels.
-
-## Use-cases
-
-- Determine if there is a cat in an image.
+This simple project shows how to label an image in an S3 bucket with Amazon Rekognition API and return a list of labels.  
 
 ## Setup
 
+- Upload a photo on [AWS S3](https://aws.amazon.com/fr/s3/)
+
 You need to create an S3 bucket and upload at least one file. Be sure the permissions on the folder and file allow public access and that CORS is configured to allow access.
+
+- Install npm packages  
 
 ```bash
 npm install
@@ -55,7 +55,7 @@ functions:
   imageAnalysis: rekognition-analysis-s3-image-dev-imageAnalysis
 ```
 
-## Usage
+## Use  
 
 You can now send an HTTP POST request directly to the endpoint using a tool like curl
 
@@ -66,6 +66,7 @@ You can now send an HTTP POST request directly to the endpoint using a tool like
 }
 ```
 
+Or use the following CLI (you have to create post.json according to the previous json)
 ```bash
 serverless invoke local -f imageAnalysis -p post.json
 ```
@@ -98,3 +99,6 @@ The expected result should be similar to:
 ## Scaling
 
 By default, AWS Lambda limits the total concurrent executions across all functions within a given region to 100. The default limit is a safety limit that protects you from costs due to potential runaway or recursive functions during initial development and testing. To increase this limit above the default, follow the steps in [To request a limit increase for concurrent executions](http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html#increase-concurrent-executions-limit).
+
+# Acknowledgment
+This repo was originaly created by [serverless](https://github.com/serverless/examples/tree/master/aws-node-rekognition-analysis-s3-image) and all the credit is for them
