@@ -59,11 +59,13 @@ functions:
 
 You can now send an HTTP POST request directly to the endpoint using a tool like curl
 
-```
-{
+```bash
+curl -XPOST 'https://6bbhhv5q22.execute-api.us-east-1.amazonaws.com/dev/analysis' \
+--header 'Content-Type: application/json' \
+--data-raw '{
   "bucket": "mycatphotos",
   "imageName": "cat.jpg"
-}
+}'
 ```
 
 Or use the following CLI (you have to create post.json according to the previous json)
